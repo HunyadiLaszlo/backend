@@ -1,3 +1,5 @@
+laravel new project_neve
+
 Migrations php
 
 	$table->charset('utf8');
