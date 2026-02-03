@@ -13,12 +13,12 @@ Models
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(category::class, foreignKey:'az id neve');  //csak akkor kell foreignKey, ha a key nem a tábla nevéből ered pl. categories táblára hivatkozó category_id
     }
 	
 	    public function products(): HasMany
     {
-        return $this->hasMany(product::class);
+        return $this->hasMany(product::class, foreignKey:'az id neve');   //csak akkor kell foreignKey, ha a key nem a tábla nevéből ered pl. categories táblára hivatkozó category_id
     }
 	
 	//Ha nem konvencionális elnevezést használunk, akkor a tábla nevét vagy a primary key-t is itt tudjuk megadni:
@@ -53,6 +53,9 @@ Resource
     'category_id' => $this->category_id,
 
     'category' => new categoryResource($this->whenLoaded('category')),
+
+	// has many-nél collection-t kell visszaadni!!!!!
+	'diak' => studentResource::collection($this->whenLoaded('students')),
 	
 Controller
 
