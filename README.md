@@ -5,6 +5,8 @@ Migrations php
 	$table->charset('utf8');
 	$table->collation('utf8_hungarian_ci');
 
+	$table->string('nev')->unique();
+	
 	$table->foreignIdFor(category::class)->nullable()->constrained();
 
 Models
