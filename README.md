@@ -24,6 +24,14 @@ Models
 	//Ha nem konvencionális elnevezést használunk, akkor a tábla nevét vagy a primary key-t is itt tudjuk megadni:
 	protected $table = 'valami';
 	protected primaryKey = 'valami';
+
+	//Dátum esetén
+	    protected function casts(): array
+    {
+        return [
+            'szuletesi_datum' => 'date:Y-m-d',
+        ];
+    }
 	
 Request
 
@@ -41,6 +49,9 @@ Request
         ];
     }
 
+	// dátumnál a sometimes mellé kell a nullable is
+	'szuletesi_datum' => ['sometimes', 'nullable',  'date'],
+
 Resource
 
 	'id' => $this->id,
@@ -56,6 +67,9 @@ Resource
 
 	// has many-nél collection-t kell visszaadni!!!!!
 	'diak' => studentResource::collection($this->whenLoaded('students')),
+
+	//ha dátum nullable, kell a ?
+	'szuletesi_datum' => $this->szuletesi_datum?->format('Y-m-d'),
 	
 Controller
 
