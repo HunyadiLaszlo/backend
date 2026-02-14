@@ -11,7 +11,7 @@ Migrations php
 
 Models
 
-    public function category(): BelongsTo
+    public function category_akarmi(): BelongsTo    !!!!jelen esetben category_akarmire kell hivatkozni a Resourceban és a Controllerben
     {
         return $this->belongsTo(category::class, foreignKey:'az id neve');  //csak akkor kell foreignKey, ha a key nem a tábla nevéből ered pl. categories táblára hivatkozó category_id
     }
@@ -63,7 +63,7 @@ Resource
 
     'category_id' => $this->category_id,
 
-    'category' => new categoryResource($this->whenLoaded('category')),
+    'category' => new categoryResource($this->whenLoaded('category_akarmi')),
 
 	// has many-nél collection-t kell visszaadni!!!!!
 	'diak' => studentResource::collection($this->whenLoaded('students')),
@@ -84,7 +84,7 @@ Controller
 	
 	public function show(product $product)
     {
-        return new productResource($product->load('category'));
+        return new productResource($product->load('category_akarmi'));
     }
 	
 	//ha státuszkódot is vissza kell küldeni
