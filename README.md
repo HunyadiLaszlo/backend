@@ -99,4 +99,8 @@ Controller
 		
 		return response()->json(data:"sikeres törlés", status:204);
     }
+
+Route
+	Route::apiResource('student', studentController::class);
+	Route::apiResource('school_class', school_classController::class);
 	
