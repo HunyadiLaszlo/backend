@@ -11,7 +11,8 @@ Migrations php
 
 Models
 
-    public function category_akarmi(): BelongsTo    !!!!jelen esetben category_akarmire kell hivatkozni a Resourceban és a Controllerben
+	//!!!!jelen esetben category_akarmire kell hivatkozni a Resourceban és a Controllerben
+    public function category_akarmi(): BelongsTo    
     {
         return $this->belongsTo(category::class, foreignKey:'az id neve');  //csak akkor kell foreignKey, ha a key nem a tábla nevéből ered pl. categories táblára hivatkozó category_id
     }
