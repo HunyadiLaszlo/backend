@@ -1,4 +1,5 @@
 laravel new project_neve
+php artisan install:api
 
 Migrations php
 
